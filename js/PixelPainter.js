@@ -14,13 +14,13 @@ const PixelPainter = function(width, height, colors) {
 
   pixelPainter.appendChild(ppCanvas);
 
-  const Grid = document.createElement('div');
-  const grid = createGrid(10,10, "<div class='cell'></div>");
+  const Canvas = document.createElement('div');
+  const canvas = createGrid(10,10, "<div class='cell'></div>");
 
-  var merged = [].concat.apply([], grid).join('');
+  var merged = [].concat.apply([], canvas).join('');
 
-  Grid.innerHTML = merged;
-  ppCanvas.appendChild(Grid);
+  Canvas.innerHTML = merged;
+  ppCanvas.appendChild(Canvas);
 
   function createPalette(colors) {
     let palette = '';
@@ -50,7 +50,7 @@ const PixelPainter = function(width, height, colors) {
 
   let flag = false;
 
-  pixelPainter.addEventListener("mousedown", function(e){
+  Canvas.addEventListener("mousedown", function(e){
     if(e.target.className !== 'cell')
       return;
 
@@ -59,11 +59,11 @@ const PixelPainter = function(width, height, colors) {
     console.log(e.target);
   });
 
-  pixelPainter.addEventListener("mouseup", function(e){
+  Canvas.addEventListener("mouseup", function(e){
         flag = false;
   });
 
-  pixelPainter.addEventListener("mousemove", function(e){
+  Canvas.addEventListener("mousemove", function(e){
     if(e.target.className !== 'cell' || flag === false){
       e.preventDefault();
       return;
@@ -71,6 +71,7 @@ const PixelPainter = function(width, height, colors) {
 
     e.target.style.backgroundColor = "black";
   });
+
 
 };
 
