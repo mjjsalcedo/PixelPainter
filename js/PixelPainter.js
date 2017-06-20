@@ -1,6 +1,7 @@
 /*jshint esversion: 6 */
 
 const PixelPainter = function(width, height, colors) {
+  let chosenColor = colors[0];
   const pixelPainter = document.getElementById("pixelPainter");
 
   const ppCanvas = document.createElement('div');
@@ -69,9 +70,12 @@ const PixelPainter = function(width, height, colors) {
       return;
     }
 
-    e.target.style.backgroundColor = "black";
+    e.target.style.backgroundColor = chosenColor;
   });
 
+  Palette.addEventListener('click', function(e) {
+    chosenColor = e.target.style.backgroundColor;
+  })
 
 };
 
