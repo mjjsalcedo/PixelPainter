@@ -1,11 +1,33 @@
- *{
-    margin: 0;
-    padding: 0;
- }
+
+
+h1{
+text-align: center;
+margin-top: 5%;
+margin-bottom: 5%;
+
+}
 
  #pixelPainter{
-  border: 1px solid black;
-  width: 1000px;
+
+ }
+
+  #pp-canvas{
+  margin-left: 15%;
+  }
+ #palette{
+  box-sizing: border-box;
+  display:inline-block;
+  margin-left: 5%
+
+  }
+
+ #canvas{
+  display:inline-block;
+  float:left;
+  margin-right: 15%;
+  width: 562px;
+  height: 500px;
+
  }
 
  .cell {
@@ -15,17 +37,4 @@
     height: 50px;
     margin: 0 auto;
     display: inline-block;
- }
-  #pp-canvas{
-    clear: both;
-  }
- #palette{
-  float: left;
- }
-
- #canvas{
-  float:right;
-  width: 562px;
-  height: 500px;
-
  }
