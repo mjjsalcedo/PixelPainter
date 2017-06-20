@@ -4,7 +4,6 @@
  }
 
  #pixelPainter{
-  margin: 0 auto;
   border: 1px solid black;
   width: 1000px;
  }
@@ -16,4 +15,17 @@
     height: 50px;
     margin: 0 auto;
     display: inline-block;
+ }
+  #pp-canvas{
+    clear: both;
+  }
+ #palette{
+  float: left;
+ }
+
+ #canvas{
+  float:right;
+  width: 562px;
+  height: 500px;
+
  }
