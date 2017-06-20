@@ -26,6 +26,7 @@ let flag = false;
 
 pixelPainter.addEventListener("mousedown", function(e){
       flag = true;
+      e.target.style.backgroundColor = "black";
 })
 
 pixelPainter.addEventListener("mouseup", function(e){
