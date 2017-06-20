@@ -1,13 +1,5 @@
 /*jshint esversion: 6 */
 
-/*const grid = document.createElement('div');
-const grid = createGrid(10,10, "<div class='cell'></div>");
-
-var merged = [].concat.apply([], grid);
-let compGrid = [];
-
-pixelPainter.innerHTML = merged.join('')*/
-
 const PixelPainter = function(width, height, colors) {
   const pixelPainter = document.getElementById("pixelPainter");
 
@@ -22,6 +14,14 @@ const PixelPainter = function(width, height, colors) {
 
   pixelPainter.appendChild(ppCanvas);
 
+  const Grid = document.createElement('div');
+  const grid = createGrid(10,10, "<div class='cell'></div>");
+
+  var merged = [].concat.apply([], grid).join('');
+
+  Grid.innerHTML = merged;
+  ppCanvas.appendChild(Grid);
+
   function createPalette(colors) {
     let palette = '';
     const length = colors.length;
@@ -33,7 +33,6 @@ const PixelPainter = function(width, height, colors) {
     return palette;
   }
 
- /* const Grid = document.createElement('div');
 
 
   function createGrid(col, rows, fill) {
@@ -52,8 +51,12 @@ const PixelPainter = function(width, height, colors) {
   let flag = false;
 
   pixelPainter.addEventListener("mousedown", function(e){
-        flag = true;
-        e.target.style.backgroundColor = "black";
+    if(e.target.className !== 'cell')
+      return;
+
+    flag = true;
+    e.target.style.backgroundColor = "black";
+    console.log(e.target);
   });
 
   pixelPainter.addEventListener("mouseup", function(e){
@@ -61,13 +64,13 @@ const PixelPainter = function(width, height, colors) {
   });
 
   pixelPainter.addEventListener("mousemove", function(e){
-    if(e.target.id === 'pixelPainter' || flag === false){
+    if(e.target.className !== 'cell' || flag === false){
       e.preventDefault();
       return;
     }
 
     e.target.style.backgroundColor = "black";
-  });*/
+  });
 
 };
 
