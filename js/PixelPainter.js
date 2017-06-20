@@ -16,6 +16,7 @@ const PixelPainter = function(width, height, colors) {
   pixelPainter.appendChild(ppCanvas);
 
   const Canvas = document.createElement('div');
+  Canvas.setAttribute('id', 'canvas');
   const canvas = createGrid(10,10, "<div class='cell'></div>");
 
   var merged = [].concat.apply([], canvas).join('');
@@ -74,6 +75,9 @@ const PixelPainter = function(width, height, colors) {
   });
 
   Palette.addEventListener('click', function(e) {
+    if (e.target.className !== 'cell')
+      return;
+
     chosenColor = e.target.style.backgroundColor;
   })
 
