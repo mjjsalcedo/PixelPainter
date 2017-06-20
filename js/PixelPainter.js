@@ -57,7 +57,7 @@ const PixelPainter = function(width, height, colors) {
       return;
 
     flag = true;
-    e.target.style.backgroundColor = "black";
+    e.target.style.backgroundColor = chosenColor;
     console.log(e.target);
   });
 
@@ -75,7 +75,7 @@ const PixelPainter = function(width, height, colors) {
   });
 
   Palette.addEventListener('click', function(e) {
-    if (e.target.className !== 'cell')
+    if(e.target.className !== 'cell')
       return;
 
     chosenColor = e.target.style.backgroundColor;

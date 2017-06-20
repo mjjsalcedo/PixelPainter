@@ -1,40 +1,41 @@
 
 
 h1{
-text-align: center;
-margin-top: 5%;
-margin-bottom: 5%;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
 
 }
 
- #pixelPainter{
+#pixelPainter {
 
- }
+}
 
-  #pp-canvas{
+#pp-canvas {
   margin-left: 15%;
-  }
- #palette{
+}
+
+#palette {
   box-sizing: border-box;
   display:inline-block;
   margin-left: 5%
 
-  }
+}
 
- #canvas{
+#canvas {
   display:inline-block;
   float:left;
   margin-right: 15%;
   width: 562px;
   height: 500px;
 
- }
+}
 
- .cell {
-    border: 1px solid black;
-    box-sizing: border-box;
-    width: 55px;
-    height: 50px;
-    margin: 0 auto;
-    display: inline-block;
- }
+.cell {
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: 55px;
+  height: 50px;
+  margin: 0 auto;
+  display: inline-block;
+}
