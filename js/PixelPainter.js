@@ -13,9 +13,14 @@ const PixelPainter = function(width, height, colors) {
   Palette.innerHTML = createPalette(colors);
 
   //clear button
-  const clearButton = document.createElement("h2");
+  const clearButton = document.createElement('button');
   clearButton.setAttribute('id', 'clearButton');
-  clearButton.innerHTML = "Clear";
+  clearButton.innerText = 'Clear';
+
+  //erase toggle button
+  const eraseButton = document.createElement('button');
+  eraseButton.setAttribute('id', 'eraseButton');
+  eraseButton.innerText = 'Erase';
 
   //canvas
   const Canvas = document.createElement('div');
@@ -28,6 +33,8 @@ const PixelPainter = function(width, height, colors) {
   ppCanvas.appendChild(Palette);
   ppCanvas.appendChild(Canvas);
   ppCanvas.appendChild(clearButton);
+  ppCanvas.appendChild(eraseButton);
+
 
   pixelPainter.appendChild(ppCanvas);
 
@@ -39,7 +46,11 @@ const PixelPainter = function(width, height, colors) {
     }
   }
 
-  clearButton.addEventListener("click", function(e){
+  eraseButton.addEventListener('click', function(e) {
+    chosenColor = 'white';
+  })
+
+  clearButton.addEventListener('click', function(e){
     //clear data grid, and renderCanvas again
     clearGrid(Grid);
     let domCanvas = renderCanvas(Grid);
