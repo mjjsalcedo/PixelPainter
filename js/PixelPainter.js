@@ -109,6 +109,89 @@ const PixelPainter = function(width, height, cellAmt, colors) {
 
 
 
+  function fillCell(col, row) {
+    console.log(col, row)
+    console.log(Grid)
+    const color = Grid[col][row];
+    //check top
+    //subtract one from column, same row
+
+    //const top = Grid[col - 1][row];
+    //if its negative
+    //if it exceeds rowAmt = 49 if its < 50 ok
+    // if it exceeds colAmt = 49 if its < 50 ok
+    var test = col - 1;
+    console.log(test)
+    if(Grid[col -1][row] && color === Grid[col -1][row]) {
+      fillCell(col - 1, row)
+      console.log('top')
+    }
+
+    //check top right
+    //subtract one from column, +1 row
+    const topRight = Grid[col - 1][row + 1];
+
+    if(color === topRight) {
+      fillCell(col - 1, row + 1);
+
+      console.log('top right')
+    }
+
+    //check right
+    //+1 row
+    const right = Grid[col][row + 1];
+
+    if(color === right) {
+      fillCell(col, row + 1);
+      console.log('right')
+    }
+
+    //check bottom right
+    //+1 col, +1 row
+    const bottomRight = Grid[col + 1][row + 1];
+
+    if(color === bottomRight) {
+      fillCell(col + 1, row + 1);
+      console.log('bottom right')
+    }
+
+    //check bottom
+    //+1 col
+    const bottom = Grid[col + 1][row];
+
+    if(color === bottom) {
+      fillCell(col + 1, row);
+      console.log('bottom')
+    }
+
+    //check bottom left
+    //+1 col, -1 row
+    const bottomLeft = Grid[col + 1][row - 1];
+
+    if(color === bottomLeft) {
+      fillCell(col + 1, row - 1);
+      console.log('bottom left')
+    }
+
+    //check left
+    //-1 row
+    const left = Grid[col][row - 1];
+
+    if(color === left) {
+      fillCell(col, row - 1)
+      console.log('left')
+    }
+
+    //check top left
+    //+1 col, -1 row
+    const topLeft = Grid[col - 1][row - 1];
+
+    if(color === topLeft) {
+      fillCell(col - 1, row - 1);
+      console.log('top left')
+    }
+  }
+
   function getIndexofNode(child) {
     const parent = child.parentNode;
     const index = Array.prototype.indexOf.call(parent.children, child);
@@ -128,7 +211,8 @@ const PixelPainter = function(width, height, cellAmt, colors) {
       const indexes = getIndexofNode(e.target);
 
       updateGrid(Grid);
-      fillCell(indexes);
+      console.log(Grid)
+      fillCell(indexes[0], indexes[1]);
     } else {
       flag = true;
       e.target.style.backgroundColor = chosenColor;
