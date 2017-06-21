@@ -45,11 +45,11 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   const domCanvas = renderCanvas(Grid, dimensions);
   Canvas.innerHTML = domCanvas;
 
-  ppCanvas.appendChild(Palette);
   ppCanvas.appendChild(clearButton);
   ppCanvas.appendChild(eraseButton);
   ppCanvas.appendChild(saveButton);
   ppCanvas.appendChild(fillButton);
+  ppCanvas.appendChild(Palette);
   ppCanvas.appendChild(Canvas);
 
   pixelPainter.appendChild(ppCanvas);
