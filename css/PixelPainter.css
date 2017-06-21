@@ -26,16 +26,13 @@ h1{
   display:inline-block;
   float:left;
   margin-right: 15%;
-  width: 562px;
-  height: 500px;
-
 }
 
 .cell {
   border: 1px solid black;
   box-sizing: border-box;
-  width: 55px;
-  height: 50px;
+  width: 15px;
+  height: 15px;
   margin: 0 auto;
   display: inline-block;
 }
