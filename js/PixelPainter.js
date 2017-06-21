@@ -29,6 +29,40 @@ const PixelPainter = function(width, height, colors) {
 
   pixelPainter.appendChild(ppCanvas);
 
+  Canvas.addEventListener("mousedown", function(e){
+    if(e.target.className !== 'cell')
+      return;
+
+    flag = true;
+    e.target.style.backgroundColor = chosenColor;
+    console.log(e.target);
+  });
+
+  Canvas.addEventListener("mouseup", function(e){
+        flag = false;
+  });
+
+  Canvas.addEventListener("mousemove", function(e){
+    if(e.target.className !== 'cell' || flag === false){
+      e.preventDefault();
+      return;
+    }
+
+    e.target.style.backgroundColor = chosenColor;
+  });
+
+  Palette.addEventListener('click', function(e) {
+    if(e.target.className !== 'cell')
+      return;
+
+    chosenColor = e.target.style.backgroundColor;
+  });
+
+  clearButton.addEventListener("click", function(e){
+        domCanvas;
+
+  });
+
   function createPalette(colors) {
     let palette = '';
     const length = colors.length;
@@ -67,40 +101,6 @@ const PixelPainter = function(width, height, colors) {
 
     return canvas;
   }
-
-  clearButton.addEventListener("click", function(e){
-        domCanvas;
-
-  });
-
-  Canvas.addEventListener("mousedown", function(e){
-    if(e.target.className !== 'cell')
-      return;
-
-    flag = true;
-    e.target.style.backgroundColor = chosenColor;
-    console.log(e.target);
-  });
-
-  Canvas.addEventListener("mouseup", function(e){
-        flag = false;
-  });
-
-  Canvas.addEventListener("mousemove", function(e){
-    if(e.target.className !== 'cell' || flag === false){
-      e.preventDefault();
-      return;
-    }
-
-    e.target.style.backgroundColor = chosenColor;
-  });
-
-  Palette.addEventListener('click', function(e) {
-    if(e.target.className !== 'cell')
-      return;
-
-    chosenColor = e.target.style.backgroundColor;
-  });
 };
 
 
