@@ -108,11 +108,14 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   let fillActive = false;
 
 
+
   function getIndexofNode(child) {
     const parent = child.parentNode;
     const index = Array.prototype.indexOf.call(parent.children, child);
+    const column = Math.floor(index / cellAmt);
+    const row = index - (column * cellAmt)
 
-    console.log(index);
+    return [column, row];
   }
 
   Canvas.addEventListener("mousedown", function(e){
@@ -122,13 +125,12 @@ const PixelPainter = function(width, height, cellAmt, colors) {
     e.preventDefault();
 
     if(fillActive) {
-      const index = getIndexofNode(e.target);
+      const indexes = getIndexofNode(e.target);
 
       updateGrid(Grid);
-      fillCell(index);
+      fillCell(indexes);
     } else {
       flag = true;
-      console.log(e)
       e.target.style.backgroundColor = chosenColor;
     }
   });
@@ -179,7 +181,6 @@ const PixelPainter = function(width, height, cellAmt, colors) {
 
   function renderCanvas(grid, dimensions){
     let canvas = "";
-    console.log(grid);
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
         canvas += "<div class='cell' style='background-color:" + grid[i][j] + "; width:" + dimensions.width + ";height:" + dimensions.height + ";'></div>";
