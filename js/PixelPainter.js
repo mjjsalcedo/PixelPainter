@@ -1,7 +1,8 @@
 /*jshint esversion: 6 */
 
-const PixelPainter = function(width, height, colors) {
+const PixelPainter = function(width, height, cellAmt, colors) {
   let chosenColor = colors[0];
+  let dimensions = {width: width / cellAmt, height: height / cellAmt};
   const pixelPainter = document.getElementById("pixelPainter");
 
   const ppCanvas = document.createElement('div');
@@ -27,8 +28,8 @@ const PixelPainter = function(width, height, colors) {
   Canvas.setAttribute('id', 'canvas');
   Canvas.style.width = width;
   Canvas.style.height = height;
-  const Grid = createGrid(width/10, height/10, 'white');
-  const domCanvas = renderCanvas(Grid);
+  const Grid = createGrid(cellAmt, cellAmt, 'white');
+  const domCanvas = renderCanvas(Grid, dimensions);
   console.log(domCanvas)
   Canvas.innerHTML = domCanvas;
 
@@ -55,7 +56,7 @@ const PixelPainter = function(width, height, colors) {
   clearButton.addEventListener('click', function(e){
     //clear data grid, and renderCanvas again
     clearGrid(Grid);
-    let domCanvas = renderCanvas(Grid);
+    let domCanvas = renderCanvas(Grid, dimensions);
     Canvas.innerHTML = domCanvas;
   });
 
@@ -95,7 +96,7 @@ const PixelPainter = function(width, height, colors) {
     const length = colors.length;
 
     for(let i = 0; i < length; i++) {
-      palette += "<div class='cell' style='background-color:" + colors[i] + ";'></div>";
+      palette += "<div class='cell color' style='background-color:" + colors[i] + "'></div>";
     }
 
     return palette;
@@ -117,12 +118,12 @@ const PixelPainter = function(width, height, colors) {
 
   let flag = false;
 
-  function renderCanvas(grid){
+  function renderCanvas(grid, dimensions){
     let canvas = "";
     console.log(grid);
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[i].length; j++) {
-        canvas += "<div class='cell' style='background-color:" + grid[i][j] + ";'></div>";
+        canvas += "<div class='cell' style='background-color:" + grid[i][j] + "; width:" + dimensions.width + ";height:" + dimensions.height + ";'></div>";
       }
     }
     return canvas;
@@ -132,4 +133,4 @@ const PixelPainter = function(width, height, colors) {
 
 const colors = ['blue', 'black', 'red', 'yellow'];
 
-const pp = new PixelPainter(552, 500, colors);
+const pp = new PixelPainter(400, 400, 100, colors);
