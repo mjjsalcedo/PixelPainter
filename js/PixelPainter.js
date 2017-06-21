@@ -25,7 +25,9 @@ const PixelPainter = function(width, height, colors) {
   //canvas
   const Canvas = document.createElement('div');
   Canvas.setAttribute('id', 'canvas');
-  const Grid = createGrid(10, 10, 'white');
+  Canvas.style.width = width;
+  Canvas.style.height = height;
+  const Grid = createGrid(width/10, height/10, 'white');
   const domCanvas = renderCanvas(Grid);
   console.log(domCanvas)
   Canvas.innerHTML = domCanvas;
