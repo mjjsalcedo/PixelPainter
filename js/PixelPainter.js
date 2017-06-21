@@ -7,23 +7,27 @@ const PixelPainter = function(width, height, colors) {
   const ppCanvas = document.createElement('div');
   ppCanvas.setAttribute('id', 'pp-canvas');
 
+  //palette
   const Palette = document.createElement('div');
   Palette.setAttribute('id', 'palette');
   Palette.innerHTML = createPalette(colors);
 
+  //clear button
   const clearButton = document.createElement("h2");
   clearButton.setAttribute('id', 'clearButton');
   clearButton.innerHTML = "Clear";
 
-  ppCanvas.appendChild(Palette);
+  //canvas
+  const Canvas = document.createElement('div');
+  Canvas.setAttribute('id', 'canvas');
+  const domCanvas = renderCanvas(createGrid(10,10,"white"));
+  Canvas.innerHTML = domCanvas;
 
+  ppCanvas.appendChild(Palette);
+  ppCanvas.appendChild(Canvas);
   ppCanvas.appendChild(clearButton);
 
   pixelPainter.appendChild(ppCanvas);
-
-  const Canvas = document.createElement('div');
-  Canvas.setAttribute('id', 'canvas');
-
 
   function createPalette(colors) {
     let palette = '';
@@ -52,12 +56,6 @@ const PixelPainter = function(width, height, colors) {
 
   let flag = false;
 
-  const domCanvas = renderCanvas(createGrid(10,10,"white"));
-  console.log(domCanvas);
-
-  Canvas.innerHTML = domCanvas;
-  ppCanvas.appendChild(Canvas);
-
   function renderCanvas(grid){
     let canvas = "";
     console.log(grid);
@@ -68,14 +66,12 @@ const PixelPainter = function(width, height, colors) {
     }
 
     return canvas;
-
   }
+
   clearButton.addEventListener("click", function(e){
         domCanvas;
 
   });
-
-
 
   Canvas.addEventListener("mousedown", function(e){
     if(e.target.className !== 'cell')
@@ -105,7 +101,6 @@ const PixelPainter = function(width, height, colors) {
 
     chosenColor = e.target.style.backgroundColor;
   });
-
 };
 
 
