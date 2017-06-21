@@ -133,4 +133,4 @@ const PixelPainter = function(width, height, cellAmt, colors) {
 
 const colors = ['blue', 'black', 'red', 'yellow'];
 
-const pp = new PixelPainter(400, 400, 100, colors);
+const pp = new PixelPainter(400, 400, 50, colors);

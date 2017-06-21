@@ -30,6 +30,7 @@ h1{
 }
 
 .cell {
+  border: 1px solid black;
   box-sizing: border-box;
   margin: 0 auto;
   display: inline-block;
