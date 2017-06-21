@@ -23,21 +23,26 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   eraseButton.setAttribute('id', 'eraseButton');
   eraseButton.innerText = 'Erase';
 
+  const saveButton = document.createElement('button');
+  saveButton.setAttribute('id', 'saveButton');
+  saveButton.innerText = 'Save';
+
   //canvas
   const Canvas = document.createElement('div');
   Canvas.setAttribute('id', 'canvas');
   Canvas.style.width = width;
   Canvas.style.height = height;
   const Grid = createGrid(cellAmt, cellAmt, 'white');
+
   const domCanvas = renderCanvas(Grid, dimensions);
   console.log(domCanvas)
   Canvas.innerHTML = domCanvas;
 
   ppCanvas.appendChild(Palette);
-  ppCanvas.appendChild(Canvas);
   ppCanvas.appendChild(clearButton);
   ppCanvas.appendChild(eraseButton);
-
+  ppCanvas.appendChild(saveButton);
+  ppCanvas.appendChild(Canvas);
 
   pixelPainter.appendChild(ppCanvas);
 
@@ -51,6 +56,11 @@ const PixelPainter = function(width, height, cellAmt, colors) {
 
   eraseButton.addEventListener('click', function(e) {
     chosenColor = 'white';
+  })
+
+  saveButton.addEventListener('click', function(e){
+    localStorage.setItem('grid', Grid);
+
   })
 
   clearButton.addEventListener('click', function(e){
@@ -83,7 +93,7 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   });
 
   Palette.addEventListener('click', function(e) {
-    if(e.target.className !== 'cell')
+    if(e.target.className !== 'cell color')
       return;
 
     chosenColor = e.target.style.backgroundColor;
@@ -130,7 +140,7 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   }
 };
 
+const colors = ["#e81717","#e87c16","#f4ea29","#37ba07","#06ba75","#05baad","#0477ba","#0434ba","#8433e0","#d732e0","#e03283","#070707"];
 
-const colors = ['blue', 'black', 'red', 'yellow'];
 
-const pp = new PixelPainter(400, 400, 50, colors);
+const pp = new PixelPainter(1000, 750, 50, colors);
