@@ -20,7 +20,9 @@ const PixelPainter = function(width, height, colors) {
   //canvas
   const Canvas = document.createElement('div');
   Canvas.setAttribute('id', 'canvas');
-  const domCanvas = renderCanvas(createGrid(10,10,"white"));
+  const Grid = createGrid(10, 10, 'white');
+  const domCanvas = renderCanvas(Grid);
+  console.log(domCanvas)
   Canvas.innerHTML = domCanvas;
 
   ppCanvas.appendChild(Palette);
@@ -28,6 +30,21 @@ const PixelPainter = function(width, height, colors) {
   ppCanvas.appendChild(clearButton);
 
   pixelPainter.appendChild(ppCanvas);
+
+  function clearGrid(grid) {
+    for(let i = 0; i < grid.length; i++) {
+      for(let j = 0; j < grid[i].length; j++) {
+        grid[i][j] = 'white';
+      }
+    }
+  }
+
+  clearButton.addEventListener("click", function(e){
+    //clear data grid, and renderCanvas again
+    clearGrid(Grid);
+    let domCanvas = renderCanvas(Grid);
+    Canvas.innerHTML = domCanvas;
+  });
 
   Canvas.addEventListener("mousedown", function(e){
     if(e.target.className !== 'cell')
@@ -58,10 +75,7 @@ const PixelPainter = function(width, height, colors) {
     chosenColor = e.target.style.backgroundColor;
   });
 
-  clearButton.addEventListener("click", function(e){
-        domCanvas;
 
-  });
 
   function createPalette(colors) {
     let palette = '';
@@ -98,7 +112,6 @@ const PixelPainter = function(width, height, colors) {
         canvas += "<div class='cell' style='background-color:" + grid[i][j] + ";'></div>";
       }
     }
-
     return canvas;
   }
 };
