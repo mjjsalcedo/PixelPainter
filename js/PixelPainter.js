@@ -27,6 +27,10 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   saveButton.setAttribute('id', 'saveButton');
   saveButton.innerText = 'Save';
 
+  const fillButton = document.createElement('button');
+  fillButton.setAttribute('id', 'fillButton');
+  fillButton.innerText = 'Fill';
+
   //canvas
   const Canvas = document.createElement('div');
   Canvas.setAttribute('id', 'canvas');
@@ -45,6 +49,7 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   ppCanvas.appendChild(clearButton);
   ppCanvas.appendChild(eraseButton);
   ppCanvas.appendChild(saveButton);
+  ppCanvas.appendChild(fillButton);
   ppCanvas.appendChild(Canvas);
 
   pixelPainter.appendChild(ppCanvas);
@@ -94,16 +99,38 @@ const PixelPainter = function(width, height, cellAmt, colors) {
     Canvas.innerHTML = domCanvas;
   });
 
+  fillButton.addEventListener('click', function(e) {
+    e.preventDefault();
+    fillActive = !fillActive;
+  })
+
   let flag = false;
+  let fillActive = false;
+
+
+  function getIndexofNode(child) {
+    const parent = child.parentNode;
+    const index = Array.prototype.indexOf.call(parent.children, child);
+
+    console.log(index);
+  }
 
   Canvas.addEventListener("mousedown", function(e){
     if(e.target.className !== 'cell')
       return;
 
     e.preventDefault();
-    flag = true;
-    e.target.style.backgroundColor = chosenColor;
-    console.log(e.target);
+
+    if(fillActive) {
+      const index = getIndexofNode(e.target);
+
+      updateGrid(Grid);
+      fillCell(index);
+    } else {
+      flag = true;
+      console.log(e)
+      e.target.style.backgroundColor = chosenColor;
+    }
   });
 
   Canvas.addEventListener("mouseup", function(e){
@@ -122,7 +149,7 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   Palette.addEventListener('click', function(e) {
     if(e.target.className !== 'cell color')
       return;
-    console.log('fdsf')
+
     chosenColor = e.target.style.backgroundColor;
   });
 
