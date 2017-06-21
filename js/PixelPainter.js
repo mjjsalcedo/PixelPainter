@@ -32,10 +32,13 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   Canvas.setAttribute('id', 'canvas');
   Canvas.style.width = width;
   Canvas.style.height = height;
-  const Grid = createGrid(cellAmt, cellAmt, 'white');
+
+  let Grid = JSON.parse(localStorage.getItem('grid'));
+
+  if(!Grid)
+    Grid = createGrid(cellAmt , cellAmt, 'white');
 
   const domCanvas = renderCanvas(Grid, dimensions);
-  console.log(domCanvas)
   Canvas.innerHTML = domCanvas;
 
   ppCanvas.appendChild(Palette);
@@ -54,33 +57,57 @@ const PixelPainter = function(width, height, cellAmt, colors) {
     }
   }
 
+  function updateGrid(grid) {
+    const cells = Canvas.querySelectorAll('.cell');
+    const length = cells.length;
+    let col = 0;
+    let row = 0;
+
+    for(let i = 0; i < length; i++) {
+      Grid[col][row] = cells[i].style.backgroundColor;
+
+      if(row < cellAmt - 1) {
+        row++;
+      } else {
+        col++;
+        row = 0;
+      }
+    }
+  }
+
   eraseButton.addEventListener('click', function(e) {
     chosenColor = 'white';
   })
 
   saveButton.addEventListener('click', function(e){
-    localStorage.setItem('grid', Grid);
+    updateGrid(Grid);
+    localStorage.setItem('grid', JSON.stringify(Grid));
+
 
   })
 
   clearButton.addEventListener('click', function(e){
     //clear data grid, and renderCanvas again
+    e.preventDefault();
     clearGrid(Grid);
     let domCanvas = renderCanvas(Grid, dimensions);
     Canvas.innerHTML = domCanvas;
   });
 
+  let flag = false;
+
   Canvas.addEventListener("mousedown", function(e){
     if(e.target.className !== 'cell')
       return;
 
+    e.preventDefault();
     flag = true;
     e.target.style.backgroundColor = chosenColor;
     console.log(e.target);
   });
 
   Canvas.addEventListener("mouseup", function(e){
-        flag = false;
+    flag = false;
   });
 
   Canvas.addEventListener("mousemove", function(e){
@@ -95,11 +122,9 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   Palette.addEventListener('click', function(e) {
     if(e.target.className !== 'cell color')
       return;
-
+    console.log('fdsf')
     chosenColor = e.target.style.backgroundColor;
   });
-
-
 
   function createPalette(colors) {
     let palette = '';
@@ -111,7 +136,6 @@ const PixelPainter = function(width, height, cellAmt, colors) {
 
     return palette;
   }
-
 
   function createGrid(col, rows, fill) {
     const grid = [];
@@ -125,8 +149,6 @@ const PixelPainter = function(width, height, cellAmt, colors) {
 
     return grid;
   }
-
-  let flag = false;
 
   function renderCanvas(grid, dimensions){
     let canvas = "";
