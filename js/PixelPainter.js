@@ -254,7 +254,7 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   }
 };
 
-const colors = ["#e81717","#e87c16","#f4ea29","#37ba07","#06ba75","#05baad","#0477ba","#0434ba","#8433e0","#d732e0","#e03283","#070707"];
+const colors = ["#e81717","#e87c16","#f4ea29","#37ba07","#06ba75","#05baad","#0477ba","#0434ba","#8433e0","#d732e0","#e03283","#070707", "#515356", "#630909", "#f7e2b7", "#e89820", "#138e3a", "#77efe9", "#778fef", "#4e30ba", "#cda4db", "#700555", "#d8114d", "#ffeded", "#662b0e"];
 
 
 const pp = new PixelPainter(1000, 750, 50, colors);
