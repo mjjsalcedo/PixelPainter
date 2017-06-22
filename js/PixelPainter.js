@@ -17,19 +17,23 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   const clearButton = document.createElement('button');
   clearButton.setAttribute('id', 'clearButton');
   clearButton.innerText = 'Clear';
+  clearButton.setAttribute('class', 'btn');
 
   //erase toggle button
   const eraseButton = document.createElement('button');
   eraseButton.setAttribute('id', 'eraseButton');
   eraseButton.innerText = 'Erase';
+  eraseButton.setAttribute('class', 'btn');
 
   const saveButton = document.createElement('button');
   saveButton.setAttribute('id', 'saveButton');
   saveButton.innerText = 'Save';
+  saveButton.setAttribute('class', 'btn');
 
   const fillButton = document.createElement('button');
   fillButton.setAttribute('id', 'fillButton');
   fillButton.innerText = 'Fill';
+  fillButton.setAttribute('class', 'btn');
 
   //canvas
   const Canvas = document.createElement('div');

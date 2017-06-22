@@ -56,10 +56,11 @@ h1 {
   border: 1px solid black;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
- #clearButton {
-
+ .btn {
+  cursor: pointer;
   display: inline-block;
   color: #666;
   background-color: #eee;
@@ -73,70 +74,7 @@ h1 {
   margin-right: 1%;
 }
 
-#clearButton:hover {
-  background-color: #699DB6;
-  border-color: rgba(0,0,0,0.3);
-  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
-  color: #FFF;
-}
-
-#eraseButton {
-  display: inline-block;
-  color: #666;
-  background-color: #eee;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 30px;
-  padding: 10px 30px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  width:200px;
-  margin-right: 1%;
-}
-
-#eraseButton:hover {
-  background-color: #699DB6;
-  border-color: rgba(0,0,0,0.3);
-  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
-  color: #FFF;
-}
-
-#saveButton {
-  display: inline-block;
-  color: #666;
-  background-color: #eee;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 30px;
-  padding: 10px 30px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  width:200px;
-  margin-right: 1%;
-}
-
-#saveButton:hover {
-  background-color: #699DB6;
-  border-color: rgba(0,0,0,0.3);
-  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
-  color: #FFF;
-}
-
-#fillButton {
-  display: inline-block;
-  color: #666;
-  background-color: #eee;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 30px;
-  padding: 10px 30px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  width:200px;
-  margin-right: 1%;
-}
-
-#fillButton:hover {
+.btn:hover {
   background-color: #699DB6;
   border-color: rgba(0,0,0,0.3);
   text-shadow: 0 1px 0 rgba(0,0,0,0.5);
