@@ -24,13 +24,16 @@ h1 {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+
 }
 
 #pp-canvas {
+
 }
 
 #palette {
-  margin-top: 20px;
+  padding-top: 40px;
+
 }
 
 #canvas {
@@ -51,11 +54,12 @@ h1 {
 
 .color {
   border: 1px solid black;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
 }
 
  #clearButton {
+
   display: inline-block;
   color: #666;
   background-color: #eee;
@@ -112,6 +116,27 @@ h1 {
 }
 
 #saveButton:hover {
+  background-color: #699DB6;
+  border-color: rgba(0,0,0,0.3);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+  color: #FFF;
+}
+
+#fillButton {
+  display: inline-block;
+  color: #666;
+  background-color: #eee;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 30px;
+  padding: 10px 30px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  width:200px;
+  margin-right: 1%;
+}
+
+#fillButton:hover {
   background-color: #699DB6;
   border-color: rgba(0,0,0,0.3);
   text-shadow: 0 1px 0 rgba(0,0,0,0.5);
