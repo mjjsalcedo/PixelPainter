@@ -176,6 +176,7 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   }
 
   Canvas.addEventListener("mousedown", function(e){
+
     if(e.target.className !== 'cell')
       return;
 
@@ -200,6 +201,9 @@ const PixelPainter = function(width, height, cellAmt, colors) {
   });
 
   Canvas.addEventListener("mousemove", function(e){
+    if(e.target.id === 'canvas')
+      flag = false;
+
     if(e.target.className !== 'cell' || flag === false){
       e.preventDefault();
       return;
